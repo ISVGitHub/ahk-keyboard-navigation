@@ -1,4 +1,28 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+﻿#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+SetCapsLockState, AlwaysOff
+
+CapsLock & j::
+	Send, {Left}
+return
+
+CapsLock & l::
+	Send, {Right}
+return
+
+CapsLock & i::
+    Send, {Up}
+return
+
+CapsLock & k::
+	Send, {Down}
+return
+
+CapsLock & u::
+    Send, {Home}
+return
+
+CapsLock & o::
+	Send, {End}
+return
