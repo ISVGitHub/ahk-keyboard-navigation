@@ -4,11 +4,11 @@ SetWorkingDir %A_ScriptDir%
 SetCapsLockState, AlwaysOff
 
 CapsLock & j::
-	Send, {Left}
+    Send, {Left}
 return
 
 CapsLock & l::
-	Send, {Right}
+    Send, {Right}
 return
 
 CapsLock & i::
@@ -16,7 +16,7 @@ CapsLock & i::
 return
 
 CapsLock & k::
-	Send, {Down}
+    Send, {Down}
 return
 
 CapsLock & u::
@@ -24,5 +24,5 @@ CapsLock & u::
 return
 
 CapsLock & o::
-	Send, {End}
+    Send, {End}
 return
