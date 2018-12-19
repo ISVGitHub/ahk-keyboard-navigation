@@ -119,3 +119,28 @@ CapsLock & h::
     else
         Send, {PgDn}
 return
+
+; Delete the next character or the entire line
+CapsLock & BackSpace::
+    if GetKeyState("Alt","p")
+        Send, +{Del}
+    else
+        Send, {Del}
+return
+
+; Combine the current line with the next line or replace the current word with the text on clipboard 
+CapsLock & p::
+    if GetKeyState("Alt","p")
+    {
+        Send, ^{Right}
+        Send, ^+{Left}
+        Send, ^v
+    }
+    else
+    {
+        Send, {End}
+        Send, {Right}
+        Send, {BackSpace}
+        Send, {Space}
+    }
+return
