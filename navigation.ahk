@@ -7,58 +7,101 @@ SetCapsLockState, AlwaysOff
 CapsLock & j::
     if GetKeyState("Alt","p")
         ; by a word
-		Send, ^{Left}
+        Send, ^{Left}
 	else
         ; by a character
-		Send, {Left}
+        Send, {Left}
 return
 
 ; Move right
 CapsLock & l::
     if GetKeyState("Alt","p")
         ; by a word
-		Send, ^{Right}
+        Send, ^{Right}
 	else
         ; by a character
-		Send, {Right}
+        Send, {Right}
 return
 
 ; Move up
 CapsLock & i::
     if GetKeyState("Alt","p")
         ; by 10 lines
-		Send, {Up 10}
+        Send, {Up 10}
 	else
         ; by one line
-		Send, {Up}
+        Send, {Up}
 return
 
 ; Move down
 CapsLock & k::
     if GetKeyState("Alt","p")
         ; by 10 lines
-		Send, {Down 10}
+        Send, {Down 10}
 	else
         ; by one line
-		Send, {Down}
+        Send, {Down}
 return
 
 ; Move to the start
 CapsLock & u::
     if GetKeyState("Alt","p")
         ; of the file
-		Send, ^{Home}
+        Send, ^{Home}
 	else
         ; of the line
-		Send, {Home}
+        Send, {Home}
 return
 
 ; Move to the end
 CapsLock & o::
-if GetKeyState("Alt","p")
+    if GetKeyState("Alt","p")
         ; of the file
-		Send, ^{End}
+        Send, ^{End}
 	else
         ; of the line
-		Send, {End}
+        Send, {End}
+return
+
+; Copy
+CapsLock & c::
+    if GetKeyState("Alt","p")
+    {
+        ; from the current character to the end of the line
+        Send, +{End}
+        Send, ^c
+    }
+	else
+        ; the entire line
+        Send, ^c
+return
+
+; Paste
+CapsLock & v::
+    if GetKeyState("Alt","p")
+    {
+        ; a copy of the current line in the next line
+        Send, {Home}
+        Send, +{End}
+        Send, ^c
+        Send, {End}
+        Send, {Enter}
+        Send, ^v
+    }
+	else
+        ; from the clipboard
+        Send, ^v
+return
+
+; Cut
+CapsLock & x::
+    if GetKeyState("Alt","p")
+    {
+        ; from the current character to the end of the line
+        Send, +{End}
+        Send, ^x
+    }
+	else
+        ; the entire line
+        Send, ^x
 return
