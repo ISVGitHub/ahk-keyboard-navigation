@@ -22,8 +22,18 @@ Loop, read, config
         primaryModifier := e2
     else if e1 = secondaryModifier
         secondaryModifier := e2
-    else if e1 = skipLines
-        skipLines := e2
+    else if e1 = linesUp
+        linesUp := e2
+    else if e1 = linesDown
+        linesDown := e2
+    else if e1 = wordsLeft
+        wordsLeft := e2
+    else if e1 = wordsRight
+        wordsRight := e2
+    else if e1 = wordsLeftSel
+        wordsLeftSel := e2
+    else if e1 = wordsRightSel
+        wordsRightSel := e2
     else if e1 = program
         programs.Push(e2)
     else
@@ -53,7 +63,7 @@ CheckActiveWindow()
     ; Move left by a word or character
     Hotkey0:
         if GetKeyState(secondaryModifier, ksMode)
-            Send, ^{Left}
+            Send, ^{Left %wordsLeft%}
         else
             Send, {Left}
     return
@@ -61,7 +71,7 @@ CheckActiveWindow()
     ; Move right by a word or character
     Hotkey1:
         if GetKeyState(secondaryModifier, ksMode)
-            Send, ^{Right}
+            Send, ^{Right %wordsRight%}
         else
             Send, {Right}
     return
@@ -69,7 +79,7 @@ CheckActiveWindow()
     ; Move up by n lines or one line
     Hotkey2:
         if GetKeyState(secondaryModifier, ksMode)
-            Send, {Up %skipLines%}
+            Send, {Up %linesUp%}
         else
             Send, {Up}
     return
@@ -77,7 +87,7 @@ CheckActiveWindow()
     ; Move down by n lines or one line
     Hotkey3:
         if GetKeyState(secondaryModifier, ksMode)
-            Send, {Down %skipLines%}
+            Send, {Down %linesDown%}
         else
             Send, {Down}
     return
@@ -138,7 +148,7 @@ CheckActiveWindow()
     ; Move left (selecting) by a word or character
     Hotkey9:
         if GetKeyState(secondaryModifier, ksMode)
-            Send, ^+{Left}
+            Send, ^+{Left %wordsLeftSel%}
         else
             Send, +{Left}
     return
@@ -146,7 +156,7 @@ CheckActiveWindow()
     ; Move right (selecting) by a word or character
     Hotkey10:
         if GetKeyState(secondaryModifier, ksMode)
-            Send, ^+{Right}
+            Send, ^+{Right %wordsRightSel%}
         else
             Send, +{Right}
     return

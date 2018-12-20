@@ -1,6 +1,11 @@
 primaryModifier=CapsLock
 secondaryModifier=Alt
-skipLines=10
+linesUp=10
+linesDown=10
+wordsLeft=1
+wordsRight=1
+wordsLeftSel=1
+wordsRightSel=1
 hotkey0=j
 hotkey1=l
 hotkey2=i
