@@ -1,59 +1,86 @@
-﻿#NoEnv
+﻿; VARIABLES
+lines = 10
+primaryModifier = CapsLock
+secondaryModifier = Alt
+hotkeys := [] 
+hotkeys.Push("j")
+hotkeys.Push("l")
+hotkeys.Push("i")
+hotkeys.Push("k")
+hotkeys.Push("u")
+hotkeys.Push("o")
+hotkeys.Push("c")
+hotkeys.Push("v")
+hotkeys.Push("x")
+hotkeys.Push("n")
+hotkeys.Push("m")
+hotkeys.Push("y")
+hotkeys.Push("h")
+hotkeys.Push("BackSpace")
+hotkeys.Push("p")
+
+for index, element in hotkeys
+{
+    i := index - 1
+    Hotkey, %primaryModifier% & %element%, Hotkey%i%, On
+}
+
+#NoEnv
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 SetCapsLockState, AlwaysOff
 
 ; Move left by a word or character
-CapsLock & j::
-    if GetKeyState("Alt","p")
+Hotkey0:
+    if GetKeyState(secondaryModifier,"p")
         Send, ^{Left}
     else
         Send, {Left}
 return
 
 ; Move right by a word or character
-CapsLock & l::
-    if GetKeyState("Alt","p")
+Hotkey1:
+    if GetKeyState(secondaryModifier,"p")
         Send, ^{Right}
     else
         Send, {Right}
 return
 
-; Move up by 10 lines or one line
-CapsLock & i::
-    if GetKeyState("Alt","p")
-        Send, {Up 10}
+; Move up by n lines or one line
+Hotkey2:
+    if GetKeyState(secondaryModifier,"p")
+        Send, {Up %lines%}
     else
         Send, {Up}
 return
 
-; Move down by 10 lines or one line
-CapsLock & k::
-    if GetKeyState("Alt","p")
-        Send, {Down 10}
+; Move down by n lines or one line
+Hotkey3:
+    if GetKeyState(secondaryModifier,"p")
+        Send, {Down %lines%}
     else
         Send, {Down}
 return
 
 ; Move to the start of the file or the line
-CapsLock & u::
-    if GetKeyState("Alt","p")
+Hotkey4:
+    if GetKeyState(secondaryModifier,"p")
         Send, ^{Home}
     else
         Send, {Home}
 return
 
 ; Move to the end of the file or the line
-CapsLock & o::
-    if GetKeyState("Alt","p")
+Hotkey5:
+    if GetKeyState(secondaryModifier,"p")
         Send, ^{End}
     else
         Send, {End}
 return
 
 ; Copy the entire line or from the current character to the end of the line
-CapsLock & c::
-    if GetKeyState("Alt","p")
+Hotkey6:
+    if GetKeyState(secondaryModifier,"p")
     {
         Send, +{End}
         Send, ^c
@@ -63,8 +90,8 @@ CapsLock & c::
 return
 
 ; Paste from the clipboard or a copy of the current line in the next line
-CapsLock & v::
-    if GetKeyState("Alt","p")
+Hotkey7:
+    if GetKeyState(secondaryModifier,"p")
     {
         Send, {Home}
         Send, +{End}
@@ -78,8 +105,8 @@ CapsLock & v::
 return
 
 ; Cut the entire line or from the current character to the end of the line
-CapsLock & x::
-    if GetKeyState("Alt","p")
+Hotkey8:
+    if GetKeyState(secondaryModifier,"p")
     {
         Send, +{End}
         Send, ^x
@@ -89,48 +116,48 @@ CapsLock & x::
 return
 
 ; Move left (selecting) by a word or character
-CapsLock & n::
-    if GetKeyState("Alt","p")
+Hotkey9:
+    if GetKeyState(secondaryModifier,"p")
         Send, ^+{Left}
     else
         Send, +{Left}
 return
 
 ; Move right (selecting) by a word or character
-CapsLock & m::
-    if GetKeyState("Alt","p")
+Hotkey10:
+    if GetKeyState(secondaryModifier,"p")
         Send, ^+{Right}
     else
         Send, +{Right}
 return
 
 ; Move up (selecting) or page up
-CapsLock & y::
-    if GetKeyState("Alt","p")
+Hotkey11:
+    if GetKeyState(secondaryModifier,"p")
         Send, +{Up}
     else
         Send, {PgUp}
 return
 
 ; Move down (selecting) or page down
-CapsLock & h::
-    if GetKeyState("Alt","p")
+Hotkey12:
+    if GetKeyState(secondaryModifier,"p")
         Send, +{Down}
     else
         Send, {PgDn}
 return
 
 ; Delete the next character or the entire line
-CapsLock & BackSpace::
-    if GetKeyState("Alt","p")
+Hotkey13:
+    if GetKeyState(secondaryModifier,"p")
         Send, +{Del}
     else
         Send, {Del}
 return
 
 ; Combine the current line with the next line or replace the current word with the text on clipboard 
-CapsLock & p::
-    if GetKeyState("Alt","p")
+Hotkey14:
+    if GetKeyState(secondaryModifier,"p")
     {
         Send, ^{Right}
         Send, ^+{Left}
