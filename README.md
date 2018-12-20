@@ -8,7 +8,7 @@ A keyboard navigation AHK script inspired by Vim
 
 ## Features
 
-![ahk-kb-nav-min](https://user-images.githubusercontent.com/45995771/50303454-3ac1af00-0474-11e9-976f-9066d94dbd0e.png)
+![ahk-kb-nav-min](https://user-images.githubusercontent.com/45995771/50303713-13b7ad00-0475-11e9-9e6c-22478323e12f.png)
 
 ### Basic Commands
 | Combination | Function |
