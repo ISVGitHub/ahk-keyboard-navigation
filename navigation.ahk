@@ -1,34 +1,30 @@
-﻿; VARIABLES
-lines = 10
-primaryModifier = CapsLock
-secondaryModifier = Alt
+﻿#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+SetCapsLockState, AlwaysOff
+
 hotkeys := [] 
-hotkeys.Push("j")
-hotkeys.Push("l")
-hotkeys.Push("i")
-hotkeys.Push("k")
-hotkeys.Push("u")
-hotkeys.Push("o")
-hotkeys.Push("c")
-hotkeys.Push("v")
-hotkeys.Push("x")
-hotkeys.Push("n")
-hotkeys.Push("m")
-hotkeys.Push("y")
-hotkeys.Push("h")
-hotkeys.Push("BackSpace")
-hotkeys.Push("p")
+
+Loop, read, config
+{
+    StringSplit, l, A_LoopReadLine, '=
+    e1 := l1
+    e2 := l2
+    if e1 = primaryModifier
+        primaryModifier = %e2%
+    else if e1 = secondaryModifier
+        secondaryModifier = %e2%
+    else if e1 = skipLines
+        skipLines =  %e2%
+    else
+        hotkeys.Push(e2)
+}
 
 for index, element in hotkeys
 {
     i := index - 1
     Hotkey, %primaryModifier% & %element%, Hotkey%i%, On
 }
-
-#NoEnv
-SendMode Input
-SetWorkingDir %A_ScriptDir%
-SetCapsLockState, AlwaysOff
 
 ; Move left by a word or character
 Hotkey0:
@@ -49,7 +45,7 @@ return
 ; Move up by n lines or one line
 Hotkey2:
     if GetKeyState(secondaryModifier,"p")
-        Send, {Up %lines%}
+        Send, {Up %skipLines%}
     else
         Send, {Up}
 return
@@ -57,7 +53,7 @@ return
 ; Move down by n lines or one line
 Hotkey3:
     if GetKeyState(secondaryModifier,"p")
-        Send, {Down %lines%}
+        Send, {Down %skipLines%}
     else
         Send, {Down}
 return
