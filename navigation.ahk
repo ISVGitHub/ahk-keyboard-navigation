@@ -185,7 +185,7 @@ CheckActiveWindow()
             Send, {Del}
     return
 
-    ; Combine the current line with the next line or replace the current word with the text on clipboard 
+    ; Combine the current line with the next line or replace the current word with the text on clipboard
     Hotkey14:
         if GetKeyState(secondaryModifier, ksMode)
         {
@@ -202,3 +202,8 @@ CheckActiveWindow()
         }
     return
 }
+
+; Enable or disable hotkeys
+Hotkey15:
+    Suspend
+return
